@@ -1,0 +1,148 @@
+/*-----------------------------    TABLE    ----------------------------------------------------*/
+.table-view{
+    -fx-background-color:  #20120F;
+}
+
+.table-view:focused{
+    -fx-background-color: transparent;
+}
+
+
+.table-view .column-header-background{
+    -fx-background-color: linear-gradient(#9C2C20 0%, #20120F 100%);
+}
+
+.table-view .column-header-background .label{
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-column {
+  -fx-alignment: center;
+}
+
+/*-----------------------------    LIBRARY -- MENU BUTTON    ----------------------------------------------------*/
+#showMovie,
+#addMovie,
+#deleteMovie,
+#rankingMovie
+{
+	-fx-background-radius: 30;
+    -fx-background-insets: 0;
+}
+
+#showMovie:hover,
+#addMovie:hover,
+#deleteMovie:hover,
+#rankingMovie:hover
+{
+	-fx-opacity: 1;
+	-fx-font-size: 16px;
+    -fx-text-fill: maroon;
+	-fx-font-weight: bold;
+}
+
+#showMovie:focused,
+#addMovie:focused,
+#deleteMovie:focused,
+#rankingMovie:focused {
+	-fx-opacity: 1;
+	-fx-font-size: 16px;
+	-fx-background-color: linear-gradient(#ff5400, #be1d00);
+	-fx-background-radius: 30;
+    -fx-background-insets: 0;
+    -fx-text-fill: white;
+	-fx-font-weight: bold;
+	
+}
+
+/*-----------------------------    MENU -- Set background color in pane main menu etc    ----------------------------------------------------*/
+#anchorPaneRight,
+#paneLogin,
+#paneSignup
+{
+	-fx-background-color:  #22394b;
+}
+
+#paneMenu,
+#anchorPaneLeft
+{
+    -fx-background-color:  #36394b;
+}
+
+/*-----------------------------    MENU -- settings Login and Menu    ----------------------------------------------------*/
+#loginButton
+{
+	-fx-font-family: Century Gothic;
+	-fx-text-fill: white;
+	-fx-font-size: 17px;
+	-fx-font-weight: bold ;
+    -fx-background-radius: 50; 
+    -fx-background-opacity: 0.8;
+	-fx-background-color: #338033;
+}
+
+#loginButton:hover {
+	
+	-fx-font-size: 20px;
+    -fx-background-radius: 50; 
+    -fx-background-opacity: 0.8;
+}
+
+#newAccountLabel,
+#signupLabel
+{
+	-fx-text-fill: white;
+}
+
+#signupLabel:hover
+{
+	-fx-text-fill: darkred;
+	-fx-underline: true;
+	-fx-text-shadow: rgba(255,255,255,0.5) 0 2px 2px;
+}
+
+#id_login, 
+#id_singup
+{
+	/*kolor tekstu*/
+	-fx-text-fill: #F5DEB3;
+}
+#id_login:hover, 
+#id_singup:hover 
+{
+     -fx-background-color:  #22394b;
+	-fx-text-fill: white;
+	 -fx-font-size: 24px;
+	 -fx-padding: 8px 35px ;
+	 -fx-font-weight: bold ;
+}
+
+#id_user,
+#id_password,
+#id_repeatPassword,
+#id_textFieldPassword,
+#id_textFieldRepeatPassword
+{
+	-fx-text-fill: white;
+    -fx-background-color:  #22394b;
+	-fx-border-color: #22394b #22394b white #22394b;
+	-fx-border-top-color: #22394b;
+	//-fx-border-width: 1;
+	//-fx-border-color: red;
+}
+
+//-----------------------------------------------------------------
+//-----------------------------------------------------------------
+/*
+#label
+{
+	-fx-border-width: 1;
+	-fx-border-color: red;
+}
+*/
