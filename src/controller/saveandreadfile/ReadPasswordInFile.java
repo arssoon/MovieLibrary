@@ -33,6 +33,7 @@ public class ReadPasswordInFile extends SwitchScene {
                     successfulLogin = conditionLogin(br);
                 } else {
                     loadDataFromFile(br, dataList);
+                    br.close();
                 }
 
             } catch (FileNotFoundException ex) {
@@ -48,20 +49,21 @@ public class ReadPasswordInFile extends SwitchScene {
     public void loadDataFromFile(BufferedReader br, ObservableList<Movie> dataList) {
         try {
             String line;
+            String FieldDelimiter = ", ";
 
             int lineNextVerse=0;
             while ((line = br.readLine()) != null) {
-                if( lineNextVerse < 5) {
+                String[] fields = line.split(FieldDelimiter, -1);
+
+                if( lineNextVerse < 4) {
                     //line wyswietla pierwsza linie, br.readLine kolejne
-                    Movie movie = new Movie(Integer.parseInt(line),
-                            br.readLine(),
-                            Integer.parseInt(br.readLine()),
-                            br.readLine(),
-                            Double.parseDouble(br.readLine())
+                    Movie movie = new Movie(fields[0],
+                            Integer.parseInt(fields[1]),
+                            fields[2],
+                            Double.parseDouble(fields[3])
                 );
                     // dodanie danych do wierwsza
                     dataList.add(movie);
-
                     lineNextVerse++;
                 }
                 lineNextVerse = 0;
@@ -69,7 +71,8 @@ public class ReadPasswordInFile extends SwitchScene {
         } catch (FileNotFoundException ex) {
             System.out.println("pierwszy catch: " + ex.getMessage());
         } catch (IOException ex) {
-            System.out.println("Drugi catch: " + ex.getMessage());        }
+            System.out.println("Drugi catch: " + ex.getMessage());
+        }
     }
 
     public boolean conditionLogin(BufferedReader br) throws IOException {

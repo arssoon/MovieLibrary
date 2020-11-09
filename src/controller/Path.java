@@ -6,6 +6,7 @@ public interface Path {
 
     //file MOVIES
     String PATH_MOVIES = "movies.txt";
+    String PATH_MOVIESTEMP = "moviesTemp.txt";
 
     // path to FXML Menu
     String PATH_MAIN = "/resources/MainWindow.fxml";

@@ -10,6 +10,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+
 public class AddLibraryController extends SwitchScene {
     @FXML
     public TextField id_nameMovie;
@@ -28,25 +29,24 @@ public class AddLibraryController extends SwitchScene {
     @FXML
     void initialize() {
         savePasswordInFile = new SavePasswordInFile();
-        try {
-            // Zliczanie lini całego pliku --- 5 lini jest jako 1 wiersz
-            idMovie = Integer.parseInt(String.valueOf((Files.lines(Paths.get(Path.PATH_MOVIES)).count())/5));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            // Zliczanie lini całego pliku --- 5 lini jest jako 1 wiersz
+//            Integer.parseInt(String.valueOf((Files.lines(Paths.get(Path.PATH_MOVIES)).count())));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
     }
 
     public void addMovie() {
-        idMovie++;
         nameMovie = id_nameMovie.getText();
         yearCreateMovie = Integer.parseInt(id_yearCreateMovie.getText());
         directorMovie = id_directorMovie.getText();
         reatingMovie = Double.parseDouble(id_ratingMovie.getText());
 
         savePasswordInFile.saveToFile(nameMovie, directorMovie, Path.PATH_MOVIES,
-                false, yearCreateMovie, reatingMovie, idMovie
+                false, yearCreateMovie, reatingMovie
         );
-        movie = new Movie(idMovie, nameMovie, yearCreateMovie, directorMovie, reatingMovie);
+        movie = new Movie(nameMovie, yearCreateMovie, directorMovie, reatingMovie);
 
         System.out.println("DODANO");
     }

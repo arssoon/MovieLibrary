@@ -1,5 +1,6 @@
 package controller;
 
+import controller.library.Movie;
 import controller.menu.MenuController;
 import controller.saveandreadfile.ReadPasswordInFile;
 import javafx.collections.ObservableList;
@@ -9,8 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 
 public abstract class SwitchScene {
-    @FXML
-    public int idMovie;
     @FXML
     protected MainController mainController;
     @FXML
@@ -42,14 +41,6 @@ public abstract class SwitchScene {
 
     public void setContentColumnNameMovie(ObservableList<String> contentColumnNameMovie) {
         this.contentColumnNameMovie = contentColumnNameMovie;
-    }
-
-    public int getIdMovie() {
-        return idMovie;
-    }
-
-    public void setIdMovie(int idMovie) {
-        this.idMovie = idMovie;
     }
 
     protected final void setAnchorPaneRight() {

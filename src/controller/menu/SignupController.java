@@ -47,7 +47,7 @@ public class SignupController extends SwitchScene {
                 if (!userName.trim().isEmpty() && !repeatPassword.trim().isEmpty()) {
                     errorLabelSignUp.setText("Prawidłowo zarejestrowany.");
                     savePasswordInFile.saveToFile(userName, password, "logs.txt",
-                            true, 0, 0, 0);
+                            true, 0, 0);
                 } else {
                     errorLabelSignUp.setText("Puste pole!");
                 }

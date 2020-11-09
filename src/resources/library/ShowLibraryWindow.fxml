@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
@@ -9,20 +9,19 @@
 
 <Pane id="paneLogin" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="533.0" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.library.ShowLibraryController">
    <children>
-      <Label alignment="CENTER" layoutX="123.0" layoutY="35.0" prefHeight="62.0" prefWidth="307.0" text="SHOWING" textFill="#e4c9c9">
+      <Separator layoutY="105.0" prefHeight="6.0" prefWidth="533.0" />
+      <Label id="labelLibraryInUpPane" fx:id="galerryMoviesLabel" alignment="CENTER" layoutX="84.0" layoutY="17.0" prefHeight="73.0" prefWidth="366.0" text="Galeria filmów" textFill="#e4c9c9">
          <font>
             <Font size="47.0" />
          </font>
       </Label>
-      <TableView fx:id="table" layoutX="14.0" layoutY="129.0" opacity="0.83" prefHeight="322.0" prefWidth="504.0" stylesheets="@../css/style.css">
+      <TableView fx:id="table" layoutX="15.0" layoutY="122.0" opacity="0.83" prefHeight="366.0" prefWidth="504.0" stylesheets="@../css/style.css">
         <columns>
-            <TableColumn fx:id="id_movie" prefWidth="29.0" text="ID" />
           <TableColumn fx:id="id_nameMovie" prefWidth="161.0" text="NAZWA" />
           <TableColumn fx:id="id_yearMovie" minWidth="0.0" prefWidth="72.0" text="ROK" />
             <TableColumn fx:id="id_directorMovie" prefWidth="175.0" text="REZYSER" />
-            <TableColumn fx:id="id_reatMovie" prefWidth="66.0" text="OCENA" />
+            <TableColumn fx:id="id_reatMovie" prefWidth="95.0" text="OCENA" />
         </columns>
       </TableView>
-      <Button id="loginButton" fx:id="id_show" layoutX="240.0" layoutY="461.0" mnemonicParsing="false" onAction="#showMovie" text="Pokaz" />
    </children>
 </Pane>

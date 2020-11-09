@@ -5,34 +5,18 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class Movie {
-    private SimpleIntegerProperty idMovie;
+//    private SimpleIntegerProperty idMovie;
     private SimpleStringProperty nameMovie;
     private SimpleIntegerProperty yearCreateMovie;
     private SimpleStringProperty directorMovie;
     private SimpleDoubleProperty reatingMovie;
 
-    public Movie(Integer idMovie, String nameMovie, Integer yearCreateMovie, String directorMovie, Double reatingMovie) {
-        this.idMovie = new SimpleIntegerProperty(idMovie);
+    public Movie(String nameMovie, Integer yearCreateMovie, String directorMovie, Double reatingMovie) {
+//        this.idMovie = new SimpleIntegerProperty(idMovie);
         this.nameMovie = new SimpleStringProperty(nameMovie);
         this.yearCreateMovie = new SimpleIntegerProperty(yearCreateMovie);
         this.directorMovie = new SimpleStringProperty(directorMovie);
         this.reatingMovie = new SimpleDoubleProperty(reatingMovie);
-    }
-
-    Movie() {
-        
-    }
-
-    public int getIdMovie() {
-        return idMovie.get();
-    }
-
-    public SimpleIntegerProperty idMovieProperty() {
-        return idMovie;
-    }
-
-    public void setIdMovie(int idMovie) {
-        this.idMovie.set(idMovie);
     }
 
     public String getNameMovie() {
