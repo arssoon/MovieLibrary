@@ -26,72 +26,58 @@ public class ReadPasswordInFile extends SwitchScene {
     public void loadFromFile(String file, boolean isPasswordFile) {
         File log = new File(file);
         BufferedReader br;
+
         if (log.exists()) {
             try {
                 br = new BufferedReader(new FileReader(file));
                 if (isPasswordFile) {
                     successfulLogin = conditionLogin(br);
+                    br.close();
                 } else {
                     loadDataFromFile(br, dataList);
                     br.close();
                 }
-
             } catch (FileNotFoundException ex) {
-                System.out.println(ex.getMessage());
-            } catch (IOException ex) {
-                System.out.println(ex.getMessage());
+                ex.getMessage();
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         } else {
             System.out.println("Plik nie istnieje.");
         }
     }
 
-    public void loadDataFromFile(BufferedReader br, ObservableList<Movie> dataList) {
-        try {
-            String line;
-            String FieldDelimiter = ", ";
+    public void loadDataFromFile(BufferedReader br, ObservableList<Movie> dataList) throws IOException {
+        String line;
+        //-------  WORDS IN A ROW SEPARATOR  -----------------------------------
+        String FieldDelimiter = ", ";
 
-            int lineNextVerse=0;
-            while ((line = br.readLine()) != null) {
-                String[] fields = line.split(FieldDelimiter, -1);
+        while ((line = br.readLine()) != null) {
+            String[] fields = line.split(FieldDelimiter, -1);
 
-                if( lineNextVerse < 4) {
-                    //line wyswietla pierwsza linie, br.readLine kolejne
-                    Movie movie = new Movie(fields[0],
-                            Integer.parseInt(fields[1]),
-                            fields[2],
-                            Double.parseDouble(fields[3])
-                );
-                    // dodanie danych do wierwsza
-                    dataList.add(movie);
-                    lineNextVerse++;
-                }
-                lineNextVerse = 0;
-            }
-        } catch (FileNotFoundException ex) {
-            System.out.println("pierwszy catch: " + ex.getMessage());
-        } catch (IOException ex) {
-            System.out.println("Drugi catch: " + ex.getMessage());
+            //-------  LINE SHOWS THE FIRST LINE BUT br.readLine THE NEXT   -----------------------------------
+            Movie movie = new Movie(fields[0],
+                    Integer.parseInt(fields[1]),
+                    fields[2],
+                    Double.parseDouble(fields[3])
+            );
+            //-------  ADDING DATA TO THE ROW   -----------------------------------
+            dataList.add(movie);
         }
     }
 
     public boolean conditionLogin(BufferedReader br) throws IOException {
-        int lines = 0;
         String line;
+        String FieldDelimiter = ", ";
 
         while ((line = br.readLine()) != null) {
-            lines++;
-            // sprawdzenie parzystosci ostatniego bitu liczby (lines & 1)
-            if (name.equals(line) && ((lines & 1) != 0)) {
-                System.out.println("Login: " + name);
-                //TODO uzyj br.readLine do kolejnego wiersza
-            } else if (password.equals(line) && ((lines & 1) == 0)) {
-                label.setText("BRAWO, wszystko się zgadza!");
-                System.out.println("PASS: " + password);
+            String[] fields = line.split(FieldDelimiter, -1);
+            //-------  CHECK LOGIN AND PASSWORD   -----------------------------------
+            if (name.equals(fields[0]) && password.equals(fields[1])) {
+                label.setText("Logowanie powiodło się.");
                 return true;
             } else {
                 label.setText("Nazwa użytkownika bądź hasło jest nieprawidłowe!");
-                return false;
             }
         }
         return false;

@@ -4,7 +4,9 @@ import controller.Path;
 import controller.SwitchScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,14 +15,16 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DeleteLibraryController extends SwitchScene implements Path {
+    public Button id_deleteButtonMovie;
     @FXML
     private ComboBox<String> id_deleteMovie;
+    @FXML
+    private Label id_informatonSuccessfulLabel;
     int chooseNumber;
 
     @FXML
     void initialize() {
-        id_deleteMovie.getItems().addAll(contentColumnNameMovie);
-
+        id_deleteMovie.getItems().addAll(listOfMovie);
     }
 
     public void deleteMovie(ActionEvent actionEvent) throws IOException {
@@ -28,20 +32,24 @@ public class DeleteLibraryController extends SwitchScene implements Path {
         if(myString != null) {
             Pattern p = Pattern.compile("\\d");
             Matcher m = p.matcher(myString);
-            List<Integer> ints = new ArrayList<Integer>();
+            List<Integer> ints = new ArrayList<>();
 
             while (m.find()) {
                 String i = m.group();
                 ints.add(Integer.valueOf(i));
             }
-            // wpisanie do zmiennej pierwszej wartosci z tablicy 'ints'
+            //-------  ENTERING THE FIRST VALUE FROM THE "INIT" TABLE TO THE VARIABLE  -----------------------------------
             chooseNumber = ints.get(0);
+            deleteRecordInFile(id_deleteMovie.getValue());
+            id_informatonSuccessfulLabel.setText("Usunięcie filmu " + id_deleteMovie.getValue()
+                    + " zakończyło się powodzeniem.");
+        } else {
+            id_informatonSuccessfulLabel.setText("Usunięcie filmu zakończyło się NIEPOWODZENIEM!");
         }
-        deleteRecordInFile(id_deleteMovie.getValue());
 
     }
 
-    // -----    usuwanie filmu    ------------------------------------------------------
+    // -----    DELETE MOVIE    ------------------------------------------------------
     public void deleteRecordInFile(String lineToRemove) throws IOException {
         File oldFile = new File(Path.PATH_MOVIES);
         File newFile = new File(Path.PATH_MOVIESTEMP);
@@ -52,7 +60,7 @@ public class DeleteLibraryController extends SwitchScene implements Path {
         String currentLine;
 
         while ((currentLine = reader.readLine()) != null) {
-            // trim newline when comparing with lineToRemove
+            //-------  Trim newline when comparing with lineToRemove  -----------------------------------
             String trimmedLine = currentLine.trim();
             if (trimmedLine.equals(lineToRemove)) continue;
             writer.write(currentLine + System.getProperty("line.separator"));
@@ -61,7 +69,7 @@ public class DeleteLibraryController extends SwitchScene implements Path {
         writer.close();
         reader.close();
 
-        // delete old file and replace him newFile about new name file
+        //-------  delete old file and replace him newFile about new name file  -----------------------------------
         if(oldFile.exists()) {
             oldFile.delete();
         }

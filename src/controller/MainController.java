@@ -26,12 +26,10 @@ public class MainController extends SwitchScene implements Path {
 
     @FXML
     public void initialize() {
-        //TODO odkomentuj
-//        loadMenuWindow(PATH_MENU);
-        loadLibraryMenuWindow(PATH_MENU_LIBRARY);
-        loadShowLibraryWindow(PATH_SHOW_LIBRARY);
+        loadMenuWindow(PATH_MENU);
     }
 
+    //-------  loading the MAIN MENU window   -----------------------------------
     public void loadMenuWindow(String fxmlPath) {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource(fxmlPath));
         Pane pane = new Pane();

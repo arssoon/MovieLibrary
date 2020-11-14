@@ -4,11 +4,15 @@ import controller.SwitchScene;
 import controller.saveandreadfile.SavePasswordInFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 public class SignupController extends SwitchScene {
+    public Button signupButton;
+    public Pane paneSignup;
     @FXML
     private TextField id_textFieldRepeatPassword;
     @FXML
@@ -20,7 +24,7 @@ public class SignupController extends SwitchScene {
     SavePasswordInFile savePasswordInFile;
 
     @FXML
-    void initialize () {
+    void initialize() {
         savePasswordInFile = new SavePasswordInFile();
     }
 
@@ -36,14 +40,16 @@ public class SignupController extends SwitchScene {
         userName = id_user.getText();
         password = id_password.getText();
         repeatPassword = id_repeatPassword.getText();
-        //TODO zrob ponowne logowanie
 
         conditionLogin();
     }
 
     private void conditionLogin() {
+        //-------  PASSWORD MUST HAVE MORE THAN 3 CHARACTERS  -----------------------------------
         if (password.length() > 3) {
+            //-------  COMPARISON OF THE PASSWORD AND THE REPEAT PASSWORD  -----------------------------------
             if (password.equals(repeatPassword)) {
+                //-------  REMOVE SPACE LIKE SIGNS  -----------------------------------
                 if (!userName.trim().isEmpty() && !repeatPassword.trim().isEmpty()) {
                     errorLabelSignUp.setText("Prawidłowo zarejestrowany.");
                     savePasswordInFile.saveToFile(userName, password, "logs.txt",

@@ -8,7 +8,7 @@ import java.io.PrintStream;
 public class SavePasswordInFile {
 
     public void saveToFile(String name, String password, String fileName,
-                           boolean isSavePassword, int yearCreateMovie, double reatingMovie
+                           boolean isSavePassword, int yearCreateMovie, double ratingMovie
     ) {
         PrintStream out = null;
         try {
@@ -16,15 +16,18 @@ public class SavePasswordInFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
         try {
             if(isSavePassword) {
-                out.append(name + "\n" + password);
+                //-------  SAVING LOGIN AND PASSWORD IN A FILE   -----------------------------------
+                if (out != null) {
+                    out.append(name + ", " + password + "\n" );
+                }
             } else {
+                //-------  SAVING NAME, YEAR, CATEGORY AND RATING MOVIES IN A FILE   -----------------------------------
                 out.append(name + ", "
                         + yearCreateMovie + ", "
                         + password + ", "
-                        + reatingMovie + "\n"
+                        + ratingMovie + "\n"
                 );
             }
         } catch (Exception e) {

@@ -20,21 +20,16 @@ public class Main extends Application implements Path {
             scene.getStylesheets().add(Path.PATH_STYLE);
             stage.setScene(scene);
 
-//            stage.initStyle(StageStyle.UNDECORATED);
-
-            stage.setTitle("Movie Library");
+            stage.setTitle("Movie-Library");
             stage.show();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    // Main Method
     public static void main(String[] args) {
         launch(args);
     }
-
 
     public Scene getScene(String fxmlPath) throws IOException {
         FXMLLoader loader = new FXMLLoader(this.getClass().getResource(fxmlPath));
@@ -43,8 +38,7 @@ public class Main extends Application implements Path {
         MainController mainController = loader.getController();
         loader.setController(mainController);
 
-        Scene scene = new Scene(pane, 800, 500);
-        return scene;
+        return new Scene(pane, 800, 500);
     }
-    
+
 }

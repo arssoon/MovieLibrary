@@ -1,4 +1,4 @@
-/*-----------------------------    TABLE    ----------------------------------------------------*/
+/*-----------------------------    TABLEVIEW    ----------------------------------------------------*/
 .table-view{
     -fx-background-color:  #20120F;
 }
@@ -27,10 +27,13 @@
 }
 
 /*-----------------------------    LIBRARY -- MENU BUTTON    ----------------------------------------------------*/
+
 #showMovie,
 #addMovie,
 #deleteMovie,
-#rankingMovie
+#rankingMovie,
+#id_login, 
+#id_signup
 {
 	-fx-background-radius: 30;
     -fx-background-insets: 0;
@@ -39,7 +42,9 @@
 #showMovie:hover,
 #addMovie:hover,
 #deleteMovie:hover,
-#rankingMovie:hover
+#rankingMovie:hover,
+#id_login:hover, 
+#id_signup:hover
 {
 	-fx-opacity: 1;
 	-fx-font-size: 16px;
@@ -50,7 +55,9 @@
 #showMovie:focused,
 #addMovie:focused,
 #deleteMovie:focused,
-#rankingMovie:focused {
+#rankingMovie:focused,
+#id_login:focused, 
+#id_signup:focused {
 	-fx-opacity: 1;
 	-fx-font-size: 16px;
 	-fx-background-color: linear-gradient(#ff5400, #be1d00);
@@ -61,8 +68,8 @@
 	
 }
 
-/*-----------------------------    LIBRARY    ------------------------------------------------------*/
 
+/*-----------------------------    LIBRARY    ------------------------------------------------------*/
 #labelLibraryInUpPane {
      -fx-background-color:  transparent;
 	 -fx-font-size: 50px;
@@ -70,6 +77,58 @@
 	 -fx-font-weight: bold; 
 }
 
+#id_categoryMovie,
+#deleteMovieCombobox
+{
+    -fx-background-color:  transparent;
+	-fx-border-color: white;
+	-fx-opacity: 0.6;
+}
+
+#id_slider
+{
+	-fx-color: -fx-accent;
+	-fx-text-fill: -fx-accent;
+}
+
+.slider .track {
+    -fx-background-color: linear-gradient(to right, #2D819D 50%, #969696 50%);
+}
+//wyśrodkowanie prompt tekstu combobox
+.combo-box-base .list-cell
+{
+	-fx-alignment: center;
+	-fx-font-size: 14px;
+}
+.combo-box-base .text{
+	-fx-fill: white;
+    -fx-effect: dropshadow( two-pass-box , darkred , .5, 10 , 1 , 1);  
+ }
+
+ // tło listy rozwijanej w Combobox
+ .combo-box-popup .list-view {
+    -fx-background-color: #22394b;
+	-fx-border-color: white;
+ }
+ 
+ // tło wierszy w liście rozwijanej w Combobox
+.combo-box-popup .list-view .list-cell 
+{
+	-fx-background-color: transparent;
+}
+
+.combo-box-popup .list-view .list-cell:filled {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.combo-box-popup .list-view .list-cell:filled:hover {
+    -fx-background-color: -fx-accent;
+}
+
+.combo-box-popup .list-view .list-cell:filled:selected {
+    -fx-background-color: -fx-accent;
+}
 
 /*-----------------------------    MENU -- Set background color in pane main menu etc    ----------------------------------------------------*/
 #anchorPaneRight,
@@ -83,6 +142,15 @@
 #anchorPaneLeft
 {
     -fx-background-color:  #36394b;
+}
+
+#errorLabel,
+#informatonSuccessfulLabel
+{
+	-fx-font-family: 'Century Gothic';
+	-fx-font-size: 12px;
+	-fx-text-fill: #eb5555;
+	-fx-alignment: center;
 }
 
 /*-----------------------------    MENU -- settings Login and Menu    ----------------------------------------------------*/
@@ -117,22 +185,6 @@
 	-fx-text-shadow: rgba(255,255,255,0.5) 0 2px 2px;
 }
 
-#id_login, 
-#id_singup
-{
-	/*kolor tekstu*/
-	-fx-text-fill: #F5DEB3;
-}
-#id_login:hover, 
-#id_singup:hover 
-{
-     -fx-background-color:  #22394b;
-	-fx-text-fill: white;
-	 -fx-font-size: 24px;
-	 -fx-padding: 8px 35px ;
-	 -fx-font-weight: bold ;
-}
-
 #id_user,
 #id_password,
 #id_repeatPassword,
@@ -141,18 +193,7 @@
 {
 	-fx-text-fill: white;
     -fx-background-color:  #22394b;
-	-fx-border-color: #22394b #22394b white #22394b;
+	-fx-border-color: white white white white;
 	-fx-border-top-color: #22394b;
-	//-fx-border-width: 1;
-	//-fx-border-color: red;
-}
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-/*
-#label
-{
 	-fx-border-width: 1;
-	-fx-border-color: red;
 }
-*/

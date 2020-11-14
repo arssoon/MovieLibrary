@@ -4,9 +4,10 @@ public interface Path {
     //file CSS
     String PATH_STYLE = "/resources/css/style.css";
 
-    //file MOVIES
+    //file MOVIES and LOGIN
     String PATH_MOVIES = "movies.txt";
     String PATH_MOVIESTEMP = "moviesTemp.txt";
+    String PATH_LOGS = "logs.txt";
 
     // path to FXML Menu
     String PATH_MAIN = "/resources/MainWindow.fxml";

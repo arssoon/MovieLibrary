@@ -1,6 +1,5 @@
 package controller;
 
-import controller.library.Movie;
 import controller.menu.MenuController;
 import controller.saveandreadfile.ReadPasswordInFile;
 import javafx.collections.ObservableList;
@@ -29,18 +28,13 @@ public abstract class SwitchScene {
     @FXML
     protected Label errorLabelSignUp;
 
+    //-------  static list variable to keep the name of the movies   -----------------------------------
+    public static ObservableList<String> listOfMovie;
+    protected ReadPasswordInFile readPasswordInFile;
     protected String userName, password;
 
-    //statyczna zmienna dla podtrzymania nazw filmów
-    public static ObservableList<String> contentColumnNameMovie;
-    protected ReadPasswordInFile readPasswordInFile;
-
-    public ObservableList<String> getContentColumnNameMovie() {
-        return contentColumnNameMovie;
-    }
-
-    public void setContentColumnNameMovie(ObservableList<String> contentColumnNameMovie) {
-        this.contentColumnNameMovie = contentColumnNameMovie;
+    public void setListOfMovie(ObservableList<String> listOfMovie) {
+        SwitchScene.listOfMovie = listOfMovie;
     }
 
     protected final void setAnchorPaneRight() {

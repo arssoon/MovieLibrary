@@ -3,51 +3,83 @@ package controller.library;
 import controller.Path;
 import controller.SwitchScene;
 import controller.saveandreadfile.SavePasswordInFile;
+import javafx.beans.binding.Bindings;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-
+import java.text.NumberFormat;
+import java.text.ParseException;
+import java.util.Locale;
 
 public class AddLibraryController extends SwitchScene {
     @FXML
     public TextField id_nameMovie;
+    public Button id_addMovie;
     @FXML
-    public TextField id_yearCreateMovie;
+    private ComboBox<Integer> id_yearCreateMovie;
     @FXML
-    public TextField id_directorMovie;
+    private TextField id_ratingMovie;
     @FXML
-    public TextField id_ratingMovie;
+    public ComboBox id_categoryMovie;
+    @FXML
+    private Label id_informatonSuccessfulLabel;
+    @FXML
+    private Slider id_sliderReating;
     SavePasswordInFile savePasswordInFile;
     Movie movie;
-    String nameMovie, directorMovie;
+    String nameMovie, categoryMovie;
     int yearCreateMovie;
-    double reatingMovie;
+    double ratingMovie;
 
     @FXML
     void initialize() {
         savePasswordInFile = new SavePasswordInFile();
-//        try {
-//            // Zliczanie lini całego pliku --- 5 lini jest jako 1 wiersz
-//            Integer.parseInt(String.valueOf((Files.lines(Paths.get(Path.PATH_MOVIES)).count())));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+        id_ratingMovie.textProperty().bind(
+                Bindings.format("%.1f", id_sliderReating.valueProperty())
+        );
+       categoryMovie();
+        id_categoryMovie.valueProperty().addListener((observable, oldValue, newValue) -> {
+            categoryMovie = String.valueOf(newValue);
+        });
+        for (int year = 2020; year >= 1980; year--) {
+            id_yearCreateMovie.getItems().add(year);
+        }
     }
 
-    public void addMovie() {
-        nameMovie = id_nameMovie.getText();
-        yearCreateMovie = Integer.parseInt(id_yearCreateMovie.getText());
-        directorMovie = id_directorMovie.getText();
-        reatingMovie = Double.parseDouble(id_ratingMovie.getText());
-
-        savePasswordInFile.saveToFile(nameMovie, directorMovie, Path.PATH_MOVIES,
-                false, yearCreateMovie, reatingMovie
+    public void categoryMovie() {
+        ObservableList<MovieCategory> category = FXCollections.observableArrayList(
+                MovieCategory.AKCJA,
+                MovieCategory.ANIMACJA,
+                MovieCategory.DRAMAT,
+                MovieCategory.HORROR,
+                MovieCategory.KOMEDIA,
+                MovieCategory.KRYMINALNY,
+                MovieCategory.PRZYGODOWY,
+                MovieCategory.ROMANTYCZNY,
+                MovieCategory.SCIENCE_FICTION,
+                MovieCategory.THRILLER
         );
-        movie = new Movie(nameMovie, yearCreateMovie, directorMovie, reatingMovie);
+        id_categoryMovie.getItems().addAll(category);
+    }
 
-        System.out.println("DODANO");
+    public void addMovie() throws ParseException {
+        nameMovie = id_nameMovie.getText();
+        yearCreateMovie = id_yearCreateMovie.getSelectionModel().getSelectedItem();
+        formatNumber();
+
+        savePasswordInFile.saveToFile(nameMovie, categoryMovie, Path.PATH_MOVIES,
+                false, yearCreateMovie, ratingMovie
+        );
+        movie = new Movie(nameMovie, yearCreateMovie, categoryMovie, ratingMovie);
+
+        id_informatonSuccessfulLabel.setText("Prawidłowo dodano film do biblioteki");
+    }
+
+    private void formatNumber() throws ParseException {
+        NumberFormat format = NumberFormat.getInstance(Locale.getDefault());
+        Number number = format.parse(String.valueOf(id_ratingMovie.getText()));
+        ratingMovie = number.doubleValue();
     }
 }
