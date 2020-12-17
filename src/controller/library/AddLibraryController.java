@@ -2,7 +2,7 @@ package controller.library;
 
 import controller.Path;
 import controller.SwitchScene;
-import controller.saveandreadfile.SavePasswordInFile;
+import controller.saveandreadfile.SaveInFile;
 import javafx.beans.binding.Bindings;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -27,7 +27,7 @@ public class AddLibraryController extends SwitchScene {
     private Label id_informatonSuccessfulLabel;
     @FXML
     private Slider id_sliderReating;
-    SavePasswordInFile savePasswordInFile;
+    SaveInFile saveInFile;
     Movie movie;
     String nameMovie, categoryMovie;
     int yearCreateMovie;
@@ -35,7 +35,7 @@ public class AddLibraryController extends SwitchScene {
 
     @FXML
     void initialize() {
-        savePasswordInFile = new SavePasswordInFile();
+        saveInFile = new SaveInFile();
         id_ratingMovie.textProperty().bind(
                 Bindings.format("%.1f", id_sliderReating.valueProperty())
         );
@@ -69,7 +69,7 @@ public class AddLibraryController extends SwitchScene {
         yearCreateMovie = id_yearCreateMovie.getSelectionModel().getSelectedItem();
         formatNumber();
 
-        savePasswordInFile.saveToFile(nameMovie, categoryMovie, Path.PATH_MOVIES,
+        saveInFile.saveToFile(nameMovie, categoryMovie, Path.PATH_MOVIES,
                 false, yearCreateMovie, ratingMovie
         );
         movie = new Movie(nameMovie, yearCreateMovie, categoryMovie, ratingMovie);

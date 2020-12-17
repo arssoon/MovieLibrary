@@ -21,5 +21,4 @@ public interface Path {
     String PATH_ADD_LIBRARY = "/resources/library/AddLibraryWindow.fxml";
     String PATH_DELETE_LIBRARY = "/resources/library/DeleteLibraryWindow.fxml";
     String PATH_RANKING_LIBRARY = "/resources/library/RankingLibraryWindow.fxml";
-
 }

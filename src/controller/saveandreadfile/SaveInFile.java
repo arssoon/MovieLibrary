@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
 
-public class SavePasswordInFile {
+public class SaveInFile {
 
     public void saveToFile(String name, String password, String fileName,
                            boolean isSavePassword, int yearCreateMovie, double ratingMovie

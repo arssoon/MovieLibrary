@@ -49,6 +49,12 @@ public class RankingLibraryController extends SwitchScene implements Initializab
 
     //-------  ASSIGN MOVIE TO THE CATEGORY  -----------------------------------
     private void addMovieToCategory(List<String> name, List<String> category, List<Double> rating) {
+/*
+        switch() {
+            case MovieCategory.AKCJA:
+        }
+        
+ */
         for (int i = 0; i < name.size(); i++) {
             if (category.get(i).trim().equals(String.valueOf(MovieCategory.AKCJA))) {
                 addDataToCategory(name, rating, i, series[0]);

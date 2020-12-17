@@ -7,19 +7,19 @@ import javafx.scene.control.Label;
 
 import java.io.*;
 
-public class ReadPasswordInFile extends SwitchScene {
+public class ReadFromFile extends SwitchScene {
     public boolean successfulLogin;
     String name, password;
     Label label;
     ObservableList<Movie> dataList;
 
-    public ReadPasswordInFile(String name, String password, Label label) {
+    public ReadFromFile(String name, String password, Label label) {
         this.name = name;
         this.password = password;
         this.label = label;
     }
 
-    public ReadPasswordInFile(ObservableList<Movie> dataList) {
+    public ReadFromFile(ObservableList<Movie> dataList) {
         this.dataList = dataList;
     }
 

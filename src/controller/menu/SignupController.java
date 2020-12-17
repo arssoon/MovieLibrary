@@ -1,7 +1,8 @@
 package controller.menu;
 
+import controller.Path;
 import controller.SwitchScene;
-import controller.saveandreadfile.SavePasswordInFile;
+import controller.saveandreadfile.SaveInFile;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -21,11 +22,11 @@ public class SignupController extends SwitchScene {
     private CheckBox id_showRepeatPassword;
 
     String repeatPassword;
-    SavePasswordInFile savePasswordInFile;
+    SaveInFile saveInFile;
 
     @FXML
     void initialize() {
-        savePasswordInFile = new SavePasswordInFile();
+        saveInFile = new SaveInFile();
     }
 
     public void showPasswordAction(ActionEvent actionEvent) {
@@ -52,7 +53,7 @@ public class SignupController extends SwitchScene {
                 //-------  REMOVE SPACE LIKE SIGNS  -----------------------------------
                 if (!userName.trim().isEmpty() && !repeatPassword.trim().isEmpty()) {
                     errorLabelSignUp.setText("Prawidłowo zarejestrowany.");
-                    savePasswordInFile.saveToFile(userName, password, "logs.txt",
+                    saveInFile.saveToFile(userName, password, Path.PATH_LOGS,
                             true, 0, 0);
                 } else {
                     errorLabelSignUp.setText("Puste pole!");

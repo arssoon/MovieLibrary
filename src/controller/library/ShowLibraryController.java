@@ -2,7 +2,7 @@ package controller.library;
 
 import controller.Path;
 import controller.SwitchScene;
-import controller.saveandreadfile.ReadPasswordInFile;
+import controller.saveandreadfile.ReadFromFile;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -27,20 +27,20 @@ public class ShowLibraryController extends SwitchScene implements Initializable 
     public TableColumn<Movie, String> id_directorMovie;
     @FXML
     public TableColumn<Movie, Double> id_ratingMovie;
-    ReadPasswordInFile readPasswordInFile;
+    ReadFromFile readFromFile;
     ObservableList<Movie> dataList;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         dataList = FXCollections.observableArrayList();
-        readPasswordInFile = new ReadPasswordInFile(dataList);
+        readFromFile = new ReadFromFile(dataList);
 
         id_nameMovie.setCellValueFactory(new PropertyValueFactory<>("nameMovie"));
         id_yearMovie.setCellValueFactory(new PropertyValueFactory<>("yearCreateMovie"));
         id_directorMovie.setCellValueFactory(new PropertyValueFactory<>("directorMovie"));
         id_ratingMovie.setCellValueFactory(new PropertyValueFactory<>("ratingMovie"));
 
-        readPasswordInFile.loadFromFile(Path.PATH_MOVIES, false);
+        readFromFile.loadFromFile(Path.PATH_MOVIES, false);
 
         //-------  ADD ELEMENTS (ALL) TO THE TABLE  -----------------------------------
         table.setItems(dataList);

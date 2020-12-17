@@ -94,7 +94,7 @@
 .slider .track {
     -fx-background-color: linear-gradient(to right, #2D819D 50%, #969696 50%);
 }
-//wyśrodkowanie prompt tekstu combobox
+/* CENTER PROMPT TEXT IN combobox*/
 .combo-box-base .list-cell
 {
 	-fx-alignment: center;
@@ -105,13 +105,13 @@
     -fx-effect: dropshadow( two-pass-box , darkred , .5, 10 , 1 , 1);  
  }
 
- // tło listy rozwijanej w Combobox
+ /* BACKGROUND LIST IN Combobox*/
  .combo-box-popup .list-view {
     -fx-background-color: #22394b;
 	-fx-border-color: white;
  }
  
- // tło wierszy w liście rozwijanej w Combobox
+ /* DROP-DOWN LINE BACKGROUND IN Combobox*/
 .combo-box-popup .list-view .list-cell 
 {
 	-fx-background-color: transparent;
@@ -161,7 +161,7 @@
 	-fx-font-size: 17px;
 	-fx-font-weight: bold ;
     -fx-background-radius: 50; 
-    -fx-background-opacity: 0.8;
+    -fx-background-opacity: 1px;
 	-fx-background-color: #338033;
 }
 
@@ -169,7 +169,7 @@
 	
 	-fx-font-size: 20px;
     -fx-background-radius: 50; 
-    -fx-background-opacity: 0.8;
+    -fx-background-opacity: 1px;
 }
 
 #newAccountLabel,

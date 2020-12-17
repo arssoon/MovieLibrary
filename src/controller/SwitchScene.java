@@ -1,7 +1,7 @@
 package controller;
 
 import controller.menu.MenuController;
-import controller.saveandreadfile.ReadPasswordInFile;
+import controller.saveandreadfile.ReadFromFile;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -24,13 +24,11 @@ public abstract class SwitchScene {
     @FXML
     protected CheckBox id_showPassword;
     @FXML
-    protected Label errorLabel;
-    @FXML
-    protected Label errorLabelSignUp;
+    protected Label errorLabel, errorLabelSignUp;
 
     //-------  static list variable to keep the name of the movies   -----------------------------------
     public static ObservableList<String> listOfMovie;
-    protected ReadPasswordInFile readPasswordInFile;
+    protected ReadFromFile readFromFile;
     protected String userName, password;
 
     public void setListOfMovie(ObservableList<String> listOfMovie) {
